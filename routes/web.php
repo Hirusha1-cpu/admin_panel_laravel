@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerMainController;
 use App\Http\Controllers\Seller\SellerProductController;
@@ -16,10 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:customer'])->name('dashboard');
+ 
 
 //admin routes
 Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
@@ -77,6 +75,17 @@ Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () 
             Route::get('/store/create','index')->name('vendor.store');
             Route::get('/store/manage','manage')->name('vendor.store.manage');
         });
+      
+    });
+    
+});
+//vendor routes
+Route::middleware(['auth', 'verified','rolemanager:customer'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::controller(CustomerMainController::class)->group(function () {
+            Route::get('/dashboard','index')->name('dashboard');
+        });
+     
       
     });
     
