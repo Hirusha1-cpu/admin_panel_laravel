@@ -20,21 +20,21 @@ class MasterSubCategoryController extends Controller
     public function showsubcat($id)
     {
         $subcategory_info = SubCategory::find($id);
-        return view('admin.subcategory.edit', compact('subcategory_info'));
+        return view('admin.sub_category.edit', compact('subcategory_info'));
     }
     public function updatesubcat(Request $request, $id)
     {
-        $category = SubCategory::findOrFail($id);
+        $subcategory = SubCategory::findOrFail($id);
         $validate_data = $request->validate([
-            'category_name' => 'unique:categories|max:100|min:3'
+            'subcategory_name' => 'max:100|min:3',
         ]);
 
-        $category->update($validate_data);
-        return redirect()->back()->with('success','SubCategory Updated Successfully');
+        $subcategory->update($validate_data);
+        return redirect()->back()->with('success','Sub-Category Updated Successfully');
     }
 
     public function deletesubcat($id){
-        $category = SubCategory::findOrFail($id)->delete();
+        $subcategory = SubCategory::findOrFail($id)->delete();
         return redirect()->back()->with('success','SubCategory Deleted Successfully');
 
     }

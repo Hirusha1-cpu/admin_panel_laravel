@@ -30,8 +30,8 @@ Manage Category Page
                                 <td>{{$cat->id}}</td>
                                 <td>{{$cat->subcategory_name}}</td>
                                 <td>
-                                    <a href="{{route('show.cat',$cat->id)}}" class="btn btn-info">Edit</a>
-                                    <form action="{{route('delete.cat',$cat->id)}}" method="POST">
+                                    <a href="{{route('show.subcat',$cat->id)}}" class="btn btn-info">Edit</a>
+                                    <form action="{{route('delete.subcat',$cat->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="DELETE" class="btn btn-danger">
