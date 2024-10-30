@@ -293,6 +293,8 @@
     </div>
 
     <script src="{{asset('admin_assets/js/app.js')}}"></script>
+    @livewireScripts
+
 
 </body>
 

@@ -3,5 +3,5 @@
 Dashboard
 @endsection
 @section('seller_layout')
-Create Product
+<livewire:show-posts/>
 @endsection
