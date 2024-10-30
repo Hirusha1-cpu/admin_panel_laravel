@@ -24,13 +24,13 @@ Create Sub Category Page
             </div>
             @endif
             <div class="card-body">
-                <form action="{{route('store.cat')}}" method="POST">
+                <form action="{{route('store.subcat')}}" method="POST">
                     @csrf
 
                     <label for="subcategory_name" class="fw-bold md-2">Give me the category name</label>
                     <input type="text" class="form-control" name="subcategory_name" placeholder="">
 
-                    <label for="category_id" class="fw-bold md-2">Give me the category name</label>
+                    <label for="category_id" class="fw-bold md-2">Give me the sub category name</label>
                     <select name="category_id" class="form-control" id="category_id">
                         @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->category_name}}</option>
